@@ -41,18 +41,27 @@ const displayImages = (ramenObj) => {
     ramenMenu.append(image)
 }
 
+const validateFormData = (valuesArr) => {
+    return valuesArr.every(el => el.trim() !== "")
+}
+
 const createNewRamen = (e) => {
     e.preventDefault()
 
-    const newRamen = {
-        name: e.target.name.value,
-        restaurant: e.target.restaurant.value,
-        image: e.target.image.value,
-        rating: e.target.rating.value,
-        comment: e.target["new-comment"].value
+    if(validateFormData([e.target.name.value, e.target.restaurant.value, e.target.image.value, e.target.rating.value, e.target["new-comment"].value])) {
+        const newRamen = {
+            name: e.target.name.value,
+            restaurant: e.target.restaurant.value,
+            image: e.target.image.value,
+            rating: e.target.rating.value,
+            comment: e.target["new-comment"].value
+        }
+    
+        displayImages(newRamen)
+        e.target.reset()
+    } else {
+        alert("Please complete submission!")
     }
-
-    displayImages(newRamen)
 }
 
 
