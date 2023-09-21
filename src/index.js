@@ -4,7 +4,8 @@
 // 2. Click on ramen image and display in fo in #ramen-detail
     // including comment and rating - done
 // 3. Create new ramen when #new-ramen submit
-    //  add image to #ramen-menu; does not need persist
+    //  add image to #ramen-menu; does not need persist - done
+// bonus 1. Display first ramen on page load
 
 
 // Global variables
@@ -75,7 +76,10 @@ const getAllRamen = () => {
             throw(err)
         }
     })
-    .then(ramenDataArr => ramenDataArr.forEach(displayImages))
+    .then(ramenDataArr => {
+        displayDetails(ramenDataArr[0])
+        ramenDataArr.forEach(displayImages)
+    })
     .catch(err => alert(err))
 }
 getAllRamen()
