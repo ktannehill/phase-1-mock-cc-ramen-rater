@@ -6,6 +6,8 @@
 // 3. Create new ramen when #new-ramen submit
     //  add image to #ramen-menu; does not need persist - done
 // bonus 1. Display first ramen on page load
+// bonus 2. Update rating & comment for ramen with form #edit-ramen
+    // does not need to persist - done
 
 
 // Global variables
@@ -18,6 +20,8 @@ const restaurant = document.querySelector("h3.restaurant")
 const rating = document.querySelector("#rating-display")
 const comment = document.querySelector("#comment-display")
 const newRamenForm = document.querySelector("#new-ramen")
+const editRamenForm = document.querySelector("#edit-ramen")
+
 
 
 // Helper functions
@@ -65,6 +69,23 @@ const createNewRamen = (e) => {
     }
 }
 
+const editRamen = (e) => {
+    e.preventDefault()
+
+    if(validateFormData([e.target.rating.value, e.target["new-comment"].value])) {
+        const newRamen = {
+            rating: e.target.rating.value,
+            comment: e.target["new-comment"].value
+        }
+        rating.textContent = newRamen.rating
+        comment.textContent = newRamen.comment
+        e.target.reset()
+    } else {
+        alert("Please complete submission!")
+    }
+}
+
+
 
 // Fetch requests
 const getAllRamen = () => {
@@ -85,5 +106,10 @@ const getAllRamen = () => {
 getAllRamen()
 
 
+
 // Event listeners
 newRamenForm.addEventListener("submit", e => createNewRamen(e))
+editRamenForm.addEventListener("submit", e => editRamen(e))
+
+
+
