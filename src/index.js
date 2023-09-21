@@ -3,6 +3,8 @@
     // display ramen images in #ramen-menu - done
 // 2. Click on ramen image and display in fo in #ramen-detail
     // including comment and rating - done
+// 3. Create new ramen when #new-ramen submit
+    //  add image to #ramen-menu; does not need persist
 
 
 // Global variables
@@ -28,6 +30,8 @@ const displayDetails = (ramenObj) => {
 }
 
 const displayImages = (ramenObj) => {
+    // console.log(ramenObj)
+    // debugger
     const image = document.createElement("img")
     image.src = ramenObj.image
     image.alt = ramenObj.name
@@ -35,6 +39,20 @@ const displayImages = (ramenObj) => {
     image.addEventListener("click", e => displayDetails(ramenObj))
 
     ramenMenu.append(image)
+}
+
+const createNewRamen = (e) => {
+    e.preventDefault()
+
+    const newRamen = {
+        name: e.target.name.value,
+        restaurant: e.target.restaurant.value,
+        image: e.target.image.value,
+        rating: e.target.rating.value,
+        comment: e.target["new-comment"].value
+    }
+
+    displayImages(newRamen)
 }
 
 
@@ -55,3 +73,4 @@ getAllRamen()
 
 
 // Event listeners
+newRamenForm.addEventListener("submit", e => createNewRamen(e))
