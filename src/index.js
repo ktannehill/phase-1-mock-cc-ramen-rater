@@ -1,1 +1,17 @@
-// write your code here
+// Steps
+
+
+
+// Global variables
+
+
+
+// Helper functions
+
+
+
+// Fetch requests
+
+
+
+// Event listeners
