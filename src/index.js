@@ -8,6 +8,8 @@
 // bonus 1. Display first ramen on page load
 // bonus 2. Update rating & comment for ramen with form #edit-ramen
     // does not need to persist - done
+// bonus 3. Delete ramen - remove from menu and do not display on details
+
 
 
 // Global variables
